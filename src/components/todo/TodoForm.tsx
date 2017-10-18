@@ -10,7 +10,6 @@ export const TodoForm = (props: TodoFormProps) => {
     return (
         <div>
             <form>
-                <label htmlFor="">Search: </label>
                 <input type="text" onChange={props.handleInput} value={props.currentTodo} />
             </form>
         </div>
