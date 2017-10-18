@@ -7,11 +7,8 @@ interface TodoItem {
 }
 
 export const TodoItem = (props: TodoItem) => (
-    <div>
-        <li>
-            <input type="checkbox" defaultChecked={props.isComplete} />
-            {props.name}
-        </li>
-        <p>test</p>
-    </div>
+    <li>
+        <input type="checkbox" defaultChecked={props.isComplete} />
+        {props.name}
+    </li>
 );
