@@ -10,6 +10,7 @@ export const TodoForm = (props: TodoFormProps) => {
     return (
         <div>
             <form>
+                <p>Form</p>
                 <input type="text" onChange={props.handleInput} value={props.currentTodo} />
             </form>
         </div>
