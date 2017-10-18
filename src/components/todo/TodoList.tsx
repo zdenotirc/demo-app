@@ -17,5 +17,6 @@ export const TodoList = (props: TodoListProps) => (
         <ul>
             {props.todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
         </ul>
+        <p>TodoList</p>
     </div>
 );
