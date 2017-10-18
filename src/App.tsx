@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './App.css';
 
 import { TodoForm } from './components/todo/TodoForm';
+import { TodoList } from './components/todo/TodoList';
 
 interface AppProps { }
 
@@ -44,13 +44,7 @@ class App extends React.Component<AppProps, AppState> {
         <div className="Todo-App">
           <TodoForm handleInput={this.handleInput} currentTodo={this.state.currentTodo} />
           <div className="Todo-List">
-            <ul>
-              {this.state.todos.map(todo =>
-                <li key={todo.id}>
-                  <input type="checkbox" defaultChecked={todo.isComplete} />
-                  {todo.name}
-                </li>)}
-            </ul>
+            <TodoList todos={this.state.todos} />
           </div>
         </div>
       </div>

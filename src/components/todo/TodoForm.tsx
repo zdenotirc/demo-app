@@ -6,10 +6,12 @@ interface TodoFormProps {
     currentTodo: string;
 }
 
-export const TodoForm = (props: TodoFormProps) => (
-    <div>
-        <form>
-            <input type="text" onChange={props.handleInput} value={props.currentTodo} />
-        </form>
-    </div>
-);
+export const TodoForm = (props: TodoFormProps) => {
+    return (
+        <div>
+            <form>
+                <input type="text" onChange={props.handleInput} value={props.currentTodo} />
+            </form>
+        </div>
+    );
+};
