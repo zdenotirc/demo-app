@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { TodoAdd } from './components/todo/TodoAdd';
 import { TodoList } from './components/todo/TodoList';
+import { addTodo, generateId } from './lib/todoHelpers';
 
 interface AppProps { }
 
@@ -30,6 +31,7 @@ class App extends React.Component<AppProps, AppState> {
     };
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput(e: React.FormEvent<HTMLInputElement>) {
@@ -38,11 +40,27 @@ class App extends React.Component<AppProps, AppState> {
     });
   }
 
+  handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const newId = generateId();
+    const newTodo: TodoItem = { id: newId, name: this.state.currentTodo, isComplete: false };
+    const todoList = addTodo(this.state.todos, newTodo);
+
+    this.setState({
+      todos: todoList,
+      currentTodo: ''
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="Todo-App">
-          <TodoAdd handleInput={this.handleInput} currentTodo={this.state.currentTodo} />
+          <TodoAdd 
+            handleInput={this.handleInput} 
+            handleSubmit={this.handleSubmit} 
+            currentTodo={this.state.currentTodo} 
+          />
           <div className="Todo-List">
             <TodoList todos={this.state.todos} />
           </div>

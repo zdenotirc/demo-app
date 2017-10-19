@@ -15,3 +15,5 @@ export const addTodo = (list: TodoItem[], item: TodoItem) => {
     list.push(item);
     return list;
 };*/
+
+export const generateId = () => Math.floor(Math.random() * 100000);
