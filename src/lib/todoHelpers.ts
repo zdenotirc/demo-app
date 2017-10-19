@@ -17,7 +17,7 @@ export const toggleTodo = (item: TodoItemModel) => {
         ...item,
         isComplete: !item.isComplete
     };
-}
+};
 
 export const updateTodo = (list: TodoItemModel[], item: TodoItemModel) => {
     return list.map((i) => {
@@ -27,4 +27,4 @@ export const updateTodo = (list: TodoItemModel[], item: TodoItemModel) => {
 
         return i;
     });
-}
+};
