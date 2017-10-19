@@ -11,6 +11,8 @@ interface AppState {
   todos: TodoItemModel[];
 
   currentTodo: string;
+
+  errorMessage: string;
 }
 
 class App extends React.PureComponent<AppProps, AppState> {
@@ -22,7 +24,8 @@ class App extends React.PureComponent<AppProps, AppState> {
         { id: 2, name: 'Professional C#', isComplete: false },
         { id: 3, name: 'Bitcoin Fundamentals', isComplete: false },
       ],
-      currentTodo: ''
+      currentTodo: '',
+      errorMessage: ''
     };
   }
 
@@ -42,17 +45,28 @@ class App extends React.PureComponent<AppProps, AppState> {
     this.setState({
       ...this.state,
       todos: todoList,
-      currentTodo: ''
+      currentTodo: '',
+      errorMessage: ''
+    });
+  }
+
+  handleEmptySubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    this.setState({
+      ...this.state,
+      errorMessage: 'Error - Todo cannot be empty!'
     });
   }
 
   render() {
+    const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
     return (
       <div className="App">
         <div className="Todo-App">
+          {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
           <TodoAdd
             handleInput={this.handleInput}
-            handleSubmit={this.handleSubmit}
+            handleSubmit={submitHandler}
             currentTodo={this.state.currentTodo}
           />
           <div className="Todo-List">
