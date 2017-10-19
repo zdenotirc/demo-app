@@ -3,22 +3,17 @@ import * as React from 'react';
 import { TodoAdd } from './components/todo/TodoAdd';
 import { TodoList } from './components/todo/TodoList';
 import { addTodo, generateId } from './lib/todoHelpers';
+import { TodoItemModel } from './models/TodoItem';
 
 interface AppProps { }
 
 interface AppState {
-  todos: TodoItem[];
+  todos: TodoItemModel[];
 
   currentTodo: string;
 }
 
-interface TodoItem {
-  id: number;
-  name: string;
-  isComplete: boolean;
-}
-
-class App extends React.Component<AppProps, AppState> {
+class App extends React.PureComponent<AppProps, AppState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -30,11 +25,11 @@ class App extends React.Component<AppProps, AppState> {
       currentTodo: ''
     };
 
-    this.handleInput = this.handleInput.bind(this);
+    // this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInput(e: React.FormEvent<HTMLInputElement>) {
+  handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     this.setState({
       currentTodo: e.currentTarget.value
     });
@@ -43,10 +38,11 @@ class App extends React.Component<AppProps, AppState> {
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const newId = generateId();
-    const newTodo: TodoItem = { id: newId, name: this.state.currentTodo, isComplete: false };
+    const newTodo: TodoItemModel = { id: newId, name: this.state.currentTodo, isComplete: false };
     const todoList = addTodo(this.state.todos, newTodo);
 
     this.setState({
+      ...this.state,
       todos: todoList,
       currentTodo: ''
     });
@@ -56,10 +52,10 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div className="App">
         <div className="Todo-App">
-          <TodoAdd 
-            handleInput={this.handleInput} 
-            handleSubmit={this.handleSubmit} 
-            currentTodo={this.state.currentTodo} 
+          <TodoAdd
+            handleInput={this.handleInput}
+            handleSubmit={this.handleSubmit}
+            currentTodo={this.state.currentTodo}
           />
           <div className="Todo-List">
             <TodoList todos={this.state.todos} />

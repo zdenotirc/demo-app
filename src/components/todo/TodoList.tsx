@@ -1,23 +1,22 @@
 import * as React from 'react';
 
 import { TodoItem } from './TodoItem';
-
-interface TodoItem {
-    id: number;
-    name: string;
-    isComplete: boolean;
-}
+import { TodoItemModel } from '../../models/TodoItem';
 
 interface TodoListProps {
-    todos: TodoItem[];
+    todos: TodoItemModel[];
 }
 
-export const TodoList = (props: TodoListProps) => {
+export const TodoList: React.StatelessComponent<TodoListProps> = ({ todos }: TodoListProps) => {
     return (
         <div className="Todo-List">
             <ul>
-                {props.todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
+                {todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
             </ul>
         </div>
     );
 };
+
+TodoList.displayName = 'TODList'
+
+TodoList.propTypes

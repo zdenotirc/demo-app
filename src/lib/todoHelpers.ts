@@ -1,16 +1,12 @@
-interface TodoItem {
-    id: number;
-    name: string;
-    isComplete: boolean;
-}
+import { TodoItemModel } from '../models/TodoItem';
 
-export const addTodo = (list: TodoItem[], item: TodoItem) => {
+export const addTodo = (list: TodoItemModel[], item: TodoItemModel) => {
     return [...list, item];
     // return list.concat(item);
 };
 
 /*
-export const addTodo = (list: TodoItem[], item: TodoItem) => {
+export const addTodo = (list: TodoItemModel[], item: TodoItemModel) => {
     // mutates existing list
     list.push(item);
     return list;
