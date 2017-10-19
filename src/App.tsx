@@ -16,18 +16,15 @@ interface AppState {
 }
 
 class App extends React.PureComponent<AppProps, AppState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      todos: [
-        { id: 1, name: 'Learn JSX', isComplete: true },
-        { id: 2, name: 'Professional C#', isComplete: false },
-        { id: 3, name: 'Bitcoin Fundamentals', isComplete: false },
-      ],
-      currentTodo: '',
-      errorMessage: ''
-    };
-  }
+  state = {
+    todos: [
+      { id: 1, name: 'Learn JSX', isComplete: true },
+      { id: 2, name: 'Professional C#', isComplete: false },
+      { id: 3, name: 'Bitcoin Fundamentals', isComplete: false },
+    ],
+    currentTodo: '',
+    errorMessage: ''
+  };
 
   handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     this.setState({
