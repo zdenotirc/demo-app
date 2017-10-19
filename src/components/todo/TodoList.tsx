@@ -12,10 +12,12 @@ interface TodoListProps {
     todos: TodoItem[];
 }
 
-export const TodoList = (props: TodoListProps) => (
-    <div className="Todo-List">
-        <ul>
-            {props.todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
-        </ul>
-    </div>
-);
+export const TodoList = (props: TodoListProps) => {
+    return (
+        <div className="Todo-List">
+            <ul>
+                {props.todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
+            </ul>
+        </div>
+    );
+};

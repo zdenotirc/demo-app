@@ -1,16 +1,15 @@
 import * as React from 'react';
 
-interface TodoFormProps {
+interface TodoAddProps {
     handleInput: (e: React.FormEvent<HTMLInputElement>) => void;
 
     currentTodo: string;
 }
 
-export const TodoForm = (props: TodoFormProps) => {
+export const TodoAdd = (props: TodoAddProps) => {
     return (
         <div>
             <form>
-                <p>Form</p>
                 <input type="text" onChange={props.handleInput} value={props.currentTodo} />
             </form>
         </div>

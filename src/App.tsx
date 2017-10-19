@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TodoForm } from './components/todo/TodoForm';
+import { TodoAdd } from './components/todo/TodoAdd';
 import { TodoList } from './components/todo/TodoList';
 
 interface AppProps { }
@@ -42,7 +42,7 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div className="App">
         <div className="Todo-App">
-          <TodoForm handleInput={this.handleInput} currentTodo={this.state.currentTodo} />
+          <TodoAdd handleInput={this.handleInput} currentTodo={this.state.currentTodo} />
           <div className="Todo-List">
             <TodoList todos={this.state.todos} />
           </div>
