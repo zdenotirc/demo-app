@@ -24,18 +24,16 @@ class App extends React.PureComponent<AppProps, AppState> {
       ],
       currentTodo: ''
     };
-
-    // this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     this.setState({
+      ...this.state,
       currentTodo: e.currentTarget.value
     });
   }
 
-  handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newId = generateId();
     const newTodo: TodoItemModel = { id: newId, name: this.state.currentTodo, isComplete: false };

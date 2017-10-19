@@ -7,7 +7,7 @@ interface TodoListProps {
     todos: TodoItemModel[];
 }
 
-export const TodoList: React.StatelessComponent<TodoListProps> = ({ todos }: TodoListProps) => {
+export const TodoList: React.StatelessComponent<TodoListProps> = ({ todos }) => {
     return (
         <div className="Todo-List">
             <ul>
@@ -17,6 +17,4 @@ export const TodoList: React.StatelessComponent<TodoListProps> = ({ todos }: Tod
     );
 };
 
-TodoList.displayName = 'TODList'
-
-TodoList.propTypes
+TodoList.displayName = 'TodoList';

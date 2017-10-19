@@ -8,11 +8,11 @@ interface TodoAddProps {
     currentTodo: string;
 }
 
-export const TodoAdd = (props: TodoAddProps) => {
+export const TodoAdd: React.StatelessComponent<TodoAddProps> = ({ handleInput, handleSubmit, currentTodo }) => {
     return (
         <div>
-            <form onSubmit={props.handleSubmit}>
-                <input type="text" onChange={props.handleInput} value={props.currentTodo} />
+            <form onSubmit={handleSubmit}>
+                <input type="text" onChange={handleInput} value={currentTodo} />
             </form>
         </div>
     );
