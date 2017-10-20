@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TodoAdd } from './components/todo/TodoAdd';
 import { TodoList } from './components/todo/TodoList';
 import { TodoItemModel } from './models/TodoItem';
-import { addTodo, generateId, updateTodo, findById, toggleTodo } from './lib/todoHelpers';
+import { addTodo, generateId, updateTodo, findById, toggleTodo, removeTodo } from './lib/todoHelpers';
 
 interface AppProps { }
 
@@ -63,6 +63,13 @@ class App extends React.PureComponent<AppProps, AppState> {
     });
   }
 
+  handleRemove = (id: number) => {
+    const todo = findById(id, this.state.todos);
+    const updatedTodos = removeTodo(this.state.todos, todo);
+
+    this.setState({ todos: updatedTodos });
+  }
+
   render() {
     const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit;
     return (
@@ -75,7 +82,7 @@ class App extends React.PureComponent<AppProps, AppState> {
             currentTodo={this.state.currentTodo}
           />
           <div className="Todo-List">
-            <TodoList handleToggle={this.handleToggle} todos={this.state.todos} />
+            <TodoList handleRemove={this.handleRemove} handleToggle={this.handleToggle} todos={this.state.todos} />
           </div>
         </div>
       </div>

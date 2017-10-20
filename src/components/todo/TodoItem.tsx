@@ -4,10 +4,15 @@ import { TodoItemModel } from '../../models/TodoItem';
 interface TodoItemProps {
     todoItemModel: TodoItemModel;
     handleToggle: (id: number) => void;
+
+    handleRemove: (id: number) => void;
 }
 
 export const TodoItem: React.StatelessComponent<TodoItemProps> = (props: TodoItemProps) => {
-    const { handleToggle, todoItemModel: { id, name, isComplete } } = props;
+    const { handleRemove, handleToggle, todoItemModel: { id, name, isComplete } } = props;
+
+    const btnStyle = { marginLeft: '5px' };
+
     return (
         <li>
             <input
@@ -16,6 +21,7 @@ export const TodoItem: React.StatelessComponent<TodoItemProps> = (props: TodoIte
                 checked={isComplete}
             />
             {name}
+            <button onClick={() => handleRemove(id)} style={btnStyle} type="submit">X</button>
         </li>
     );
 };

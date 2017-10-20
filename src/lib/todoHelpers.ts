@@ -36,3 +36,12 @@ export const updateTodo = (list: TodoItemModel[], item?: TodoItemModel) => {
 
     return list;
 };
+
+export const removeTodo = (list: TodoItemModel[], item?: TodoItemModel) => {
+    if (item) {
+        const newList = list.filter((i) => i.id !== item.id);
+        return newList;
+    }
+
+    return list;
+};

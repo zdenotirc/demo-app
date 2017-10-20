@@ -1,4 +1,4 @@
-import { addTodo, findById, toggleTodo, updateTodo } from './todoHelpers';
+import { addTodo, findById, toggleTodo, updateTodo, removeTodo } from './todoHelpers';
 
 describe('addTodo', () => {
     const startTodo = [
@@ -79,6 +79,33 @@ describe('updateTodo', () => {
 
     test('should not mutate original array', () => {
         const actual = updateTodo(startTodo, updatedTodo);
+
+        expect(actual).not.toBe(startTodo);
+    });
+});
+
+describe('removeTodo', () => {
+    const startTodo = [
+        { id: 1, name: 'One', isComplete: false },
+        { id: 2, name: 'Two', isComplete: false },
+        { id: 3, name: 'Three', isComplete: false }
+    ];
+
+    const removedTodo = { id: 2, name: 'Two', isComplete: false }
+
+    const expectedTodo = [
+        { id: 1, name: 'One', isComplete: false },
+        { id: 3, name: 'Three', isComplete: false }
+    ];
+
+    test('should remove an item from the array', () => {
+        const actual = removeTodo(startTodo, removedTodo);
+
+        expect(actual).toEqual(expectedTodo);
+    });
+
+    test('should not mutate original array', () => {
+        const actual = removeTodo(startTodo, removedTodo);
 
         expect(actual).not.toBe(startTodo);
     });
