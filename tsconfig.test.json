@@ -1,6 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs"
-  }
+    "outDir": "../output/debug"
+  },
+  "include": [
+    "../src/**/*.ts",
+    "../__tests__/**/*.ts"
+  ]
 }
