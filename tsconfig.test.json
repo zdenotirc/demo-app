@@ -1,10 +1,16 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../output/debug"
+  "transform": {
+    ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
-  "include": [
-    "../src/**/*.ts",
-    "../__tests__/**/*.ts"
-  ]
+  "testRegex": ".*\\.test\\.ts$",
+  "moduleFileExtensions": [
+    "js",
+    "ts",
+    "tsx"
+  ],
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "./tsconfig.test.json"
+    }
+  }
 }

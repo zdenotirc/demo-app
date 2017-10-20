@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { TodoAdd } from './components/todo/TodoAdd';
 import { TodoList } from './components/todo/TodoList';
-import { addTodo, generateId } from './lib/todoHelpers';
 import { TodoItemModel } from './models/TodoItem';
+import { addTodo, generateId /*, updateTodo, findById, toggleTodo */ } from './lib/todoHelpers';
 
 interface AppProps { }
 
@@ -32,6 +32,15 @@ class App extends React.PureComponent<AppProps, AppState> {
       currentTodo: e.currentTarget.value
     });
   }
+
+  /*
+  handleToggle = (id: number) => {
+    const todo = findById(id, this.state.todos);
+    const toggled = toggleTodo(todo);
+    const updatedTodos = updateTodo(this.state.todos, toggled);
+
+    this.setState({ todos: updatedTodos });
+  }*/
 
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
