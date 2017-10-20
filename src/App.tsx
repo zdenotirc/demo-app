@@ -64,8 +64,7 @@ class App extends React.PureComponent<AppProps, AppState> {
   }
 
   handleRemove = (id: number) => {
-    const todo = findById(id, this.state.todos);
-    const updatedTodos = removeTodo(this.state.todos, todo);
+    const updatedTodos = removeTodo(this.state.todos, id);
 
     this.setState({ todos: updatedTodos });
   }

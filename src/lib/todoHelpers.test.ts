@@ -91,7 +91,7 @@ describe('removeTodo', () => {
         { id: 3, name: 'Three', isComplete: false }
     ];
 
-    const removedTodo = { id: 2, name: 'Two', isComplete: false }
+    const removedId = 2;
 
     const expectedTodo = [
         { id: 1, name: 'One', isComplete: false },
@@ -99,13 +99,13 @@ describe('removeTodo', () => {
     ];
 
     test('should remove an item from the array', () => {
-        const actual = removeTodo(startTodo, removedTodo);
+        const actual = removeTodo(startTodo, removedId);
 
         expect(actual).toEqual(expectedTodo);
     });
 
     test('should not mutate original array', () => {
-        const actual = removeTodo(startTodo, removedTodo);
+        const actual = removeTodo(startTodo, removedId);
 
         expect(actual).not.toBe(startTodo);
     });

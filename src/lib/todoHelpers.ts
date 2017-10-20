@@ -37,11 +37,8 @@ export const updateTodo = (list: TodoItemModel[], item?: TodoItemModel) => {
     return list;
 };
 
-export const removeTodo = (list: TodoItemModel[], item?: TodoItemModel) => {
-    if (item) {
-        const newList = list.filter((i) => i.id !== item.id);
-        return newList;
-    }
+export const removeTodo = (list: TodoItemModel[], id: number) => {
+    const newList = list.filter((item) => item.id !== id);
 
-    return list;
+    return newList;
 };
