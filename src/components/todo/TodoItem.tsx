@@ -6,11 +6,16 @@ interface TodoItemProps {
     handleToggle: (id: number) => void;
 }
 
-export const TodoItem: React.StatelessComponent<TodoItemProps> = ({ handleToggle, todoItemModel: { id, name, isComplete } }) => {
+export const TodoItem: React.StatelessComponent<TodoItemProps> = (props: TodoItemProps) => {
+    const { handleToggle, todoItemModel: { id, name, isComplete } } = props;
     return (
         <li>
-            <input type="checkbox" onChange={() => handleToggle(id)} checked={isComplete} />
+            <input
+                type="checkbox"
+                onChange={() => handleToggle(id)}
+                checked={isComplete}
+            />
             {name}
         </li>
-    )
+    );
 };
