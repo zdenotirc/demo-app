@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { TodoItemModel } from '../../models/TodoItem';
 
-export const TodoItem: React.StatelessComponent<TodoItemModel> = ({ name, isComplete }) => (
-    <li>
-        <input type="checkbox" defaultChecked={isComplete} />
-        {name}
-    </li>
-);
+interface TodoItemProps {
+    todoItemModel: TodoItemModel;
+    handleToggle: (id: number) => void;
+}
+
+export const TodoItem: React.StatelessComponent<TodoItemProps> = ({ handleToggle, todoItemModel: { id, name, isComplete } }) => {
+    return (
+        <li>
+            <input type="checkbox" onChange={() => handleToggle(id)} checked={isComplete} />
+            {name}
+        </li>
+    )
+};

@@ -12,19 +12,27 @@ export const findById = (id: number, list: TodoItemModel[]) => {
     return item;
 };
 
-export const toggleTodo = (item: TodoItemModel) => {
-    return {
-        ...item,
-        isComplete: !item.isComplete
-    };
+export const toggleTodo = (item?: TodoItemModel) => {
+    if (item) {
+        return {
+            ...item,
+            isComplete: !item.isComplete
+        };
+    }
+
+    return;
 };
 
-export const updateTodo = (list: TodoItemModel[], item: TodoItemModel) => {
-    return list.map((i) => {
-        if (i.id === item.id) {
-            i = item;
-        }
+export const updateTodo = (list: TodoItemModel[], item?: TodoItemModel) => {
+    if (item) {
+        return list.map((i) => {
+            if (i.id === item.id) {
+                i = item;
+            }
 
-        return i;
-    });
+            return i;
+        });
+    }
+
+    return list;
 };
